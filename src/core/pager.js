@@ -13,6 +13,11 @@ export function setItemsPerPage(state, count) {
 }
 
 
+export function getItemsPerPage(state) {
+    return state.get('pager').get('itemsPerPage')
+}
+
+
 /**
  * Pager - set current page
  * @param state

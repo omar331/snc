@@ -1,11 +1,11 @@
 import {expect} from 'chai';
 import {List, Map} from 'immutable';
-import {setItemsPerPage,
+import {setItemsPerPage, getItemsPerPage,
         setCurrentPage, getCurrentPage, goToNextPage,
         goToPriorPage, setCurrentPageItems, getCurrentPageItems
 }
-                    from '../src/core/pager';
-import {getInitialState} from '../src/contrato/initial_state';
+                    from '../../src/core/pager';
+import {getInitialState} from '../../src/contrato/initial_state';
 
 describe('Pager operations =====> ', () => {
 
@@ -18,6 +18,20 @@ describe('Pager operations =====> ', () => {
 
         expect(newState.get('pager').get('itemsPerPage'))
                     .to.equal(SET_ITEMS_PER_PAGE_TO);
+    })
+
+
+
+    it('get items per page', () => {
+        const ITEMS_PER_PAGE = 23
+
+        const state0 = getInitialState()
+
+        const state1 = setItemsPerPage(state0, ITEMS_PER_PAGE)
+
+        const itemsPerPage = getItemsPerPage(state1)
+
+        expect(itemsPerPage).to.equal(ITEMS_PER_PAGE)
     })
 
     it('sets current page', () => {
